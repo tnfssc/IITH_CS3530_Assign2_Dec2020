@@ -14,9 +14,9 @@
 ---
 ## Docs
 > __Server__
-- Start the server using `npm run server`
+- Start the server using `npm run server <PORT>`. e.g. `npm run server 1337`
 > __Client__
-- Start the client using `npm run client`
+- Start the client using `npm run client <IP/HOST> <PORT>`. e.g. `npm run client localhost 1337`
 
 ---
 ## References

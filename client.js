@@ -1,19 +1,17 @@
 "use strict";
 
 var tls = require("tls");
-var fs = require("fs");
 
-const PORT = 1337;
-const HOST = "127.0.0.1";
-
+const args = process.argv.slice(2)
+const PORT = args[1] || process.env.PORT || 1337;
+const HOST = args[0] || process.env.HOST || "127.0.0.1";
+console.log(process.argv)
 // Pass the certs to the server and let it know to process even unauthorized certs.
 var options = {
-  key: fs.readFileSync("./certs/key.pem"),
-  cert: fs.readFileSync("./certs/cert.pem"),
   rejectUnauthorized: false,
 };
 
-var client = tls.connect(PORT, HOST, options, function () {
+var client = tls.connect(PORT, HOST, { rejectUnauthorized: false }, () => {
   // Check if the authorization worked
   if (client.authorized) {
     console.log("Connection authorized by a Certificate Authority.");

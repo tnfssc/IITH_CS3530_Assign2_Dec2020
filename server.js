@@ -3,8 +3,8 @@
 var tls = require("tls");
 var fs = require("fs");
 
-const PORT = 1337;
-const HOST = "127.0.0.1";
+const args = process.argv.slice(2)
+const PORT = parseInt(args[1]) || process.env.PORT || 1337;
 
 var options = {
   key: fs.readFileSync("./certs/key.pem"),
@@ -28,8 +28,8 @@ var server = tls.createServer(options, function (socket) {
 });
 
 // Start listening on a specific port and address
-server.listen(PORT, HOST, function () {
-  console.log("I'm listening at %s, on port %s", HOST, PORT);
+server.listen(PORT, function () {
+  console.log("I'm listening on port %d", PORT);
 });
 
 // When an error occurs, show it.
