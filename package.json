@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node server.js",
+    "server": "node server.js",
     "client": "node client.js",
     "init": "bash init.sh"
   }
