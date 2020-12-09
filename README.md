@@ -9,14 +9,14 @@
 ## Get Started
 - Initialize the project using `npm run init`
 - Start the server using `npm run server`
-- Start the client using `npm run client`
+- Start the client using `npm run client localhost:1337`
 
 ---
 ## Docs
 > __Server__
 - Start the server using `npm run server <PORT>`. e.g. `npm run server 1337`
 > __Client__
-- Start the client using `npm run client <IP/HOST> <PORT>`. e.g. `npm run client localhost 1337`
+- Start the client using `npm run client <IP/HOST> <PORT?optional>`. e.g. `npm run client localhost 1337` or `npm run client localhost:1337`
 
 ---
 ## References

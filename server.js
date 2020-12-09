@@ -2,7 +2,7 @@ const tls = require("tls");
 const fs = require("fs");
 
 const args = process.argv.slice(2)
-const PORT = parseInt(args[1]) || process.env.PORT || 1337;
+const PORT = parseInt(args[0]) || process.env.PORT || 1337;
 
 const options = {
   key: fs.readFileSync("./certs/key.pem"),
