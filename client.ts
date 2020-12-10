@@ -1,4 +1,4 @@
-const tls = require("tls");
+import tls from "tls";
 
 const args = process.argv.slice(2);
 if (args.length < 1) process.exit(1);
@@ -6,7 +6,7 @@ const PORT = args[1] || process.env.PORT;
 const HOST = args[0] || process.env.HOST;
 
 var client = tls.connect(
-  { rejectUnauthorized: false, host: HOST.split(":")[0], port: HOST.split(":")[1] || PORT },
+  { rejectUnauthorized: false, host: HOST.split(":")[0], port: parseInt(HOST.split(":")[1] || PORT) },
   () => {
     if (client.authorized) {
       console.log("Connection authorized by a Certificate Authority.");

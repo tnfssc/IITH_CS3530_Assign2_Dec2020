@@ -1,5 +1,5 @@
-const tls = require("tls");
-const fs = require("fs");
+import tls from "tls";
+import fs from "fs";
 
 const args = process.argv.slice(2);
 const PORT = parseInt(args[0]) || process.env.PORT || 1337;
@@ -26,5 +26,5 @@ server.listen(PORT, () => {
 
 server.on("error", error => {
   console.error(error);
-  server.destroy();
+  process.exit(1);
 });
