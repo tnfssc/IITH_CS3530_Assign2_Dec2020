@@ -3,7 +3,7 @@
 ## Prerequisites
 - [OpenSSL](https://www.openssl.org/)
 - [Bash (Unix shell)](https://www.gnu.org/software/bash/)
-- [NodeJS Runtime](https://nodejs.org/en/)
+- [NodeJS 12+ Runtime](https://nodejs.org/en/)
 
 ---
 ## Get Started

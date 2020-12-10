@@ -1,10 +1,10 @@
-import tls from "tls";
+import tls, { TlsOptions } from "tls";
 import fs from "fs";
 
 const args = process.argv.slice(2);
-const PORT = parseInt(args[0]) || process.env.PORT || 1337;
+const PORT = parseInt(args[0] || process.env.PORT || "1337");
 
-const options = {
+const options: TlsOptions = {
   key: fs.readFileSync("./certs/key.pem"),
   cert: fs.readFileSync("./certs/cert.pem"),
   rejectUnauthorized: false,

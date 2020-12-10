@@ -2,8 +2,8 @@ import tls from "tls";
 
 const args = process.argv.slice(2);
 if (args.length < 1) process.exit(1);
-const PORT = args[1] || process.env.PORT;
-const HOST = args[0] || process.env.HOST;
+const PORT = args[1] || process.env.PORT || "1337";
+const HOST = args[0] || process.env.HOST || "localhost:1337";
 
 var client = tls.connect(
   { rejectUnauthorized: false, host: HOST.split(":")[0], port: parseInt(HOST.split(":")[1] || PORT) },
