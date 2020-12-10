@@ -1,7 +1,13 @@
 {
   "scripts": {
-    "server": "node server.js",
-    "client": "node client.js",
-    "init": "bash init.sh"
+    "server": "node bin/server.bin",
+    "client": "node bin/client.bin",
+    "init": "bash init.sh",
+    "buildServer": "esbuild server.ts --bundle --platform=node --target=node14.15.0 --outfile=bin/server.bin",
+    "buildClient": "esbuild client.ts --bundle --platform=node --target=node14.15.0 --outfile=bin/client.bin",
+    "build": "npm run buildServer && npm run buildClient"
+  },
+  "dependencies": {
+    "esbuild": "^0.8.21"
   }
 }
