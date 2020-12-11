@@ -11,9 +11,17 @@ const options: TlsOptions = {
 };
 
 const server = tls.createServer(options, socket => {
-  socket.write("I am the server sending you a message.");
-  socket.on("data", function (data) {
-    console.log("Received: %s [it is %d bytes long]", data.toString().replace(/(\n)/gm, ""), data.length);
+  console.log("Connected to client.");
+  socket.on("data", data => {
+    console.log(
+      "Received: %s [it is %d bytes long]. [%d].",
+      data.toString().replace(/(\n)/gm, ""),
+      data.length,
+      new Date().getTime()
+    );
+    socket.write(data, () => {
+      console.log("Echoed the same at %d", new Date().getTime());
+    });
   });
   socket.on("end", () => {
     console.log("EOT (End Of Transmission)");
