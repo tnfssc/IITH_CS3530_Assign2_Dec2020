@@ -28,6 +28,7 @@ var client = tls.connect(
       console.log("Connection not authorized: " + client.authorizationError);
     }
     console.log("Connected to server.");
+    console.log("[Instructions: Type and press enter to send a message.]");
   }
 );
 
@@ -38,7 +39,7 @@ client.on("data", data => {
     data.length,
     new Date().getTime()
   );
-  console.log("Enter a message to send: ");
+  console.log("Enter a message to send (or exit): ");
 });
 
 client.on("close", () => {

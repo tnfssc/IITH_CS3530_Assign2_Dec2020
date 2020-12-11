@@ -10,7 +10,7 @@
 - Initialize the project using `npm run init`
 - Compile the project using `npm run build`
 - Start the server using `npm run server`
-- Start the client using `npm run client localhost:1337`
+- Start the client using `npm run client localhost:1337` and follow the instructions
 
 ---
 ## Docs
