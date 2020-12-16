@@ -21,7 +21,7 @@ const args = {
 };
 
 if (!!args["c"] === !!args["l"]) {
-  console.log(chalk.redBright("\nERROR: Pass (only) one argument for listen (--l) or connect (--c)\n\n"));
+  console.log(chalk.redBright("\nERROR: Pass (only) one argument for listen (--listen) or connect (--connect).\n\n"));
   process.exit(1);
 }
 
