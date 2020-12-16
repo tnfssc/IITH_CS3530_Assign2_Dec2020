@@ -8,6 +8,7 @@
     "build": "npm run buildServer && npm run buildClient"
   },
   "dependencies": {
+    "chalk": "^4.1.0",
     "esbuild": "^0.8.21"
   },
   "devDependencies": {
