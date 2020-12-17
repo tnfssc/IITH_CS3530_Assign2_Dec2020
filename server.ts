@@ -3,6 +3,8 @@ import dgram from "dgram";
 import chalk from "chalk";
 import fs from "fs";
 
+import { splitAddress } from "./functions";
+
 const args = {
   b: process.env.npm_config_broadcast,
   p: process.env.npm_config_port,
@@ -14,9 +16,8 @@ if (!args.b || !args.p) {
 }
 
 const PORT = parseInt(args.p);
-const BROADCASTPORT = parseInt(args.b.split(":")[1]);
-const MCAST_ADDR = args.b.split(":")[0];
-const broadcastServer = dgram.createSocket({ type: "udp4", reuseAddr: true });
+const { host: MCAST_ADDR, port: BROADCASTPORT, type: ipv } = splitAddress(args.b);
+const broadcastServer = dgram.createSocket({ type: ipv === 4 ? "udp4" : "udp6", reuseAddr: true });
 broadcastServer.bind(BROADCASTPORT, () => {
   broadcastServer.setBroadcast(true);
   broadcastServer.setMulticastTTL(128);

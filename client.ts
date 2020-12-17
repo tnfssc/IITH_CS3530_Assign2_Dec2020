@@ -3,6 +3,8 @@ import dgram from "dgram";
 import chalk from "chalk";
 import Readline from "readline";
 
+import { splitAddress } from "./functions";
+
 const readline = Readline.createInterface({
   input: process.stdin,
   output: process.stdout,
@@ -26,9 +28,7 @@ if (!!args["c"] === !!args["l"]) {
 }
 
 if (args["c"]) {
-  const PORT = parseInt(args["c"].split(":")[1]);
-  const HOST = args["c"].split(":")[0];
-
+  const { host: HOST, port: PORT } = splitAddress(args["c"]);
   const client = tls.connect({ rejectUnauthorized: false, host: HOST, port: PORT }, () => {
     if (client.authorized) {
       console.log("Connection authorized by a Certificate Authority.");
@@ -69,9 +69,8 @@ if (args["c"]) {
     }
   })();
 } else if (args["l"]) {
-  const BROADCASTPORT = parseInt(args["l"].split(":")[1]);
-  const MCAST_ADDR = args["l"].split(":")[0];
-  const client = dgram.createSocket({ type: "udp4", reuseAddr: true });
+  const { host: MCAST_ADDR, port: BROADCASTPORT, type: ipv } = splitAddress(args["l"]);
+  const client = dgram.createSocket({ type: ipv === 4 ? "udp4" : "udp6", reuseAddr: true });
 
   client.on("listening", () => {
     var address = client.address();

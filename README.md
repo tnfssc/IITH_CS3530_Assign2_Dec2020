@@ -12,9 +12,9 @@ This is a server client pair demonstrating secure TLS connection between them an
 ## Get Started
 - Initialize the project using `npm run init`
 - Compile the project using `npm run build`
-- Start the server using `npm run server --port=1337 --broadcast=230.185.192.108:41848`
-- Start the client broadcaster using `npm run client --connect=localhost:1337`
-- Start the client receiver using `npm run client --listen=230.185.192.108:41848`
+- Start the server using `npm run server --port=1337 --broadcast=230.185.192.108:41848` or `npm run server --port=1337 --broadcast=[ff02::1]:41428`
+- Start the client broadcaster using `npm run client --connect=localhost:1337` or `npm run client --connect=[::1]:1337`
+- Start the client receiver using `npm run client --listen=230.185.192.108:41848` or `npm run client --listen=[ff02::1]:41428`
 
 ---
 ## Docs
